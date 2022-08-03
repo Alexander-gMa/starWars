@@ -9,6 +9,7 @@ import { WelcomeComponent } from './pages/welcome-page/welcome/welcome.component
 import { CharactersComponent } from './pages/characters/characters/characters.component';
 import { FilmsComponent } from './pages/films/films/films.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PlanetsComponent } from './pages/planets/planets/planets.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     WelcomeComponent,
     CharactersComponent,
-    FilmsComponent
+    FilmsComponent,
+    PlanetsComponent
   ],
   imports: [
     BrowserModule,
