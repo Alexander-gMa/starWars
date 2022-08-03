@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { WelcomeComponent } from './pages/welcome-page/welcome/welcome.component';
 import { CharactersComponent } from './pages/characters/characters/characters.component';
 import { FilmsComponent } from './pages/films/films/films.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FilmsComponent } from './pages/films/films/films.component';
   imports: [
     BrowserModule,
     NgbModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-films',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FilmsComponent implements OnInit {
 
-  constructor() { }
+  films: any;
+
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
+    this.getFilms()
+  }
+
+  getFilms() {
+    this.apiService.getFilms().subscribe((data) => {
+      this.films = data;
+    })
+  }
+
+  abc(){
+    console.log(this.films)
   }
 
 }
