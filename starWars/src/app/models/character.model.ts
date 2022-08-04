@@ -2,7 +2,7 @@ import { Film } from "./film.model";
 import { Planet } from "./planet.model";
 
 export interface Character {
-  id?: string;
+  id?: string | number;
   name?: string;
   birthday?: string;
   gender?: string;

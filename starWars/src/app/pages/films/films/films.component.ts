@@ -23,8 +23,7 @@ export class FilmsComponent implements OnInit {
     })
   }
 
-  abc(){
+  abc() {
     console.log(this.films)
   }
-
 }

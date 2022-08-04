@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-characters',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CharactersComponent implements OnInit {
 
-  constructor() { }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
+  }
+
+  abc() {
+    this.apiService.createCharacter({ name: 'Sanya', gender: 'man' }).subscribe((data) => {
+      console.log(data)
+    })
+  }
+
+  getCharacter() {
+    this.apiService.getCharacter({ id: 8 }).subscribe((data) => {
+      console.log(data)
+    })
   }
 
 }
