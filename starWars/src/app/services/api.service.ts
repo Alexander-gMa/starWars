@@ -34,6 +34,15 @@ export class ApiService {
     )
   }
 
+  getCharacters(): Observable<Character[]> {
+    return this.httpClient.get<ResponseHttp>(BASE + 'api/characters').pipe(
+      map((data) => (
+        data.data.items
+      ),
+        catchError(async (error) => console.log(error)))
+    )
+  }
+
   getCharacter(character: Character): Observable<Character> {
     return this.httpClient.get<ResponseHttp>(BASE + 'api/characters/' + character.id).pipe(
       map((data) => (
