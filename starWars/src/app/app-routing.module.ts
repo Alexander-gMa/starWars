@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CharacterInfoComponent } from './components/character-info/character-info.component';
 import { CharactersComponent } from './pages/characters/characters/characters.component';
 import { FilmsComponent } from './pages/films/films/films.component';
 import { NotFoundComponentComponent } from './pages/not-found-component/not-found-component.component';
@@ -15,10 +16,13 @@ const routes: Routes = [
     path : 'welcome',
     component : WelcomeComponent
   },
-
   {
     path : 'characters',
     component : CharactersComponent
+  },
+  {
+    path : 'character/:id',
+    component : CharacterInfoComponent
   },
   {
     path : 'films',

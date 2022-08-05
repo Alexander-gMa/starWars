@@ -13,8 +13,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { NotFoundComponentComponent } from './pages/not-found-component/not-found-component.component';
 import { CharacterComponent } from './components/character/character.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatDialogCharacterComponent } from './components/mat-dialog-character/mat-dialog-character.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CharacterInfoComponent } from './components/character-info/character-info.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PlanetsComponent,
     NotFoundComponentComponent,
     CharacterComponent,
-    MatDialogCharacterComponent,
+    CharacterInfoComponent,
   ],
   imports: [
     BrowserModule,

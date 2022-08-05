@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Character } from 'src/app/models/character.model';
-import { MatDialogCharacterComponent } from '../mat-dialog-character/mat-dialog-character.component';
 
 @Component({
   selector: 'app-character',
@@ -12,17 +12,15 @@ export class CharacterComponent implements OnInit {
 
   @Input() character: Character;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog,
+    private router: Router) { }
 
   ngOnInit(): void {
     console.log(this.character)
   }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(MatDialogCharacterComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+  switchPage() {
+    this.router.navigateByUrl(`character/${this.character.id}`);
   }
 }
