@@ -1,0 +1,9 @@
+.wrapper{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 30px auto;
+  grid-gap: 10px;
+}
+.character_el{
+  width: 25%;
+}
