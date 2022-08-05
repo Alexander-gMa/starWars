@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CharactersComponent } from './pages/characters/characters/characters.component';
 import { FilmsComponent } from './pages/films/films/films.component';
+import { NotFoundComponentComponent } from './pages/not-found-component/not-found-component.component';
 import { PlanetsComponent } from './pages/planets/planets/planets.component';
 import { WelcomeComponent } from './pages/welcome-page/welcome/welcome.component';
 
@@ -27,6 +28,7 @@ const routes: Routes = [
     path : 'planets',
     component : PlanetsComponent
   },
+  { path: '**', component: NotFoundComponentComponent },
 ];
 
 @NgModule({
