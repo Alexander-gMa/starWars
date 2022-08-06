@@ -15,6 +15,10 @@ import { CharacterComponent } from './components/character/character.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CharacterInfoComponent } from './components/character-info/character-info.component';
+import { StoreModule } from '@ngrx/store';
+import * as fromCharacters from './redux/reducers/character.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { CharacterEffects } from './redux/effects/character.effect';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,15 @@ import { CharacterInfoComponent } from './components/character-info/character-in
     AppRoutingModule,
     HttpClientModule,
     MatDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    StoreModule.forRoot(
+      {
+        characters: fromCharacters.characterReducer,
+      },
+    ),
+    EffectsModule.forRoot([
+      CharacterEffects,
+    ]),
   ],
   providers: [],
   bootstrap: [AppComponent]

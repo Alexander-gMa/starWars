@@ -9,7 +9,7 @@ export class CharacterInfoComponent implements OnInit {
 
   viewValue: boolean = true;
 
-  constructor() { }
+  constructor( ) { }
 
   ngOnInit(): void {
   }

@@ -29,7 +29,12 @@
 
 .flap::before {
   position: absolute;
-  content: "";
+  content: "click";
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 10px;
+  font-size: 45px;
   height: 100%;
   width: 50%;
   background: white;
@@ -40,7 +45,12 @@
 
 .flap::after {
   position: absolute;
-  content: "";
+  content: "on me";
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 10px;
+  font-size: 45px;
   height: 100%;
   width: 50%;
   right: 0;

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Character } from 'src/app/models/character.model';
+import { selectCharacters } from 'src/app/redux/selectors/character.selector';
 import { ApiService } from 'src/app/services/api.service';
+import * as CharacterActions from '../../../redux/actions/character.action';
 
 @Component({
   selector: 'app-characters',
@@ -11,10 +14,12 @@ export class CharactersComponent implements OnInit {
 
   characters: Character[];
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private store: Store) { }
 
   ngOnInit(): void {
     this.getCharacters()
+    this.store.dispatch(CharacterActions.getAllCharacters())
+    this.store.select(selectCharacters).subscribe((data)=> console.log(data));
   }
 
   createCharacter() {
