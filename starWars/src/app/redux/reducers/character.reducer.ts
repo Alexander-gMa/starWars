@@ -17,6 +17,12 @@ export const reducer = createReducer(
       characters: characters,
     });
   }),
+  on(CharacterAction.getCharacterByIdSuccess, (state, { currentCharacter }) => {
+    return ({
+      ...state,
+      currentCharacter: currentCharacter,
+    });
+  }),
 );
 
 export function characterReducer(state: ICharactersState | undefined, action: Action) {

@@ -17,7 +17,6 @@ export class CharacterComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    console.log(this.character)
   }
 
   switchPage() {

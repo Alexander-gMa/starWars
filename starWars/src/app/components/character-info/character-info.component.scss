@@ -1,3 +1,6 @@
+p{
+  margin: 0px;
+}
 .container {
   position: absolute;
   left: 50%;
@@ -8,13 +11,18 @@
   background: rgb(241, 241, 241);
   overflow: hidden;
   border-radius: 20px;
-  cursor: pointer;
   box-shadow: 0 0 20px 8px #d0d0d0;
   padding: 0px;
+  cursor: pointer;
 }
 
 .content {
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  width: 100%;
+  gap: 10px;
   top: 50%;
   transform: translatey(-50%);
   text-align: justify;
@@ -86,7 +94,7 @@
 
 .block {
   border-radius: 20px;
-  border: 2px solid red;
+  border: 1px solid rgb(109, 109, 109);
   position: absolute;
   left: 50%;
   top: 50%;
@@ -95,7 +103,49 @@
   width: 600px;
   background: rgb(241, 241, 241);
   overflow: hidden;
-  cursor: pointer;
   box-shadow: 0 0 20px 8px #d0d0d0;
   padding: 0px;
+  transition: 0.5s;
+}
+
+.update_btn,
+.back_btn {
+  position: absolute;
+  bottom: 20px;
+  width: 75px;
+  height: 34px;
+  background-color: #433147;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  box-shadow: 2px 0 4px #433147;
+  font-size: 12px;
+  color: #fff;
+  cursor: pointer;
+  float: right;
+  font-size: 14px;
+}
+
+.update_btn {
+  right: 20px;
+  background-color: green;
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.back_btn {
+  right: 100px;
+  background-color: red;
+}
+
+.character_property{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.validate_error{
+  color: red;
+  font-size: 12px;
 }

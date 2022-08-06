@@ -12,14 +12,13 @@ import * as CharacterActions from '../../../redux/actions/character.action';
 })
 export class CharactersComponent implements OnInit {
 
-  characters: Character[];
+  characters: Character[] | null;
 
   constructor(private apiService: ApiService, private store: Store) { }
 
   ngOnInit(): void {
-    this.getCharacters()
     this.store.dispatch(CharacterActions.getAllCharacters())
-    this.store.select(selectCharacters).subscribe((data)=> console.log(data));
+    this.store.select(selectCharacters).subscribe((data)=> this.characters = data);
   }
 
   createCharacter() {
@@ -42,7 +41,6 @@ export class CharactersComponent implements OnInit {
 
   getCharacters() {
     this.apiService.getCharacters().subscribe((data) => {
-      console.log(data);
       this.characters = data;
     })
   }

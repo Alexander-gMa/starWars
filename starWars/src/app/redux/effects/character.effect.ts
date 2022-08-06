@@ -11,7 +11,7 @@ export class CharacterEffects {
     private actions$: Actions,
     private apiService: ApiService,
   ) {}
-  getAllBoards$ = createEffect(
+  getAllCharacters$ = createEffect(
     () => {
       return this.actions$.pipe(
         ofType(CharacterAction.getAllCharacters),
@@ -21,6 +21,21 @@ export class CharacterEffects {
         ),
         map((characters) => {
           return CharacterAction.getAllCharactersSuccess({ characters });
+        }),
+      );
+    },
+  );
+
+  getCharacterById$ = createEffect(
+    () => {
+      return this.actions$.pipe(
+        ofType(CharacterAction.getCharacterById),
+        map(data => data.info),
+        mergeMap((info) => {
+          return this.apiService.getCharacter(info);
+        }),
+        map((currentCharacter) => {
+          return CharacterAction.getCharacterByIdSuccess({ currentCharacter });
         }),
       );
     },

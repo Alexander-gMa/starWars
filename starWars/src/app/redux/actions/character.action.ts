@@ -10,3 +10,12 @@ export const getAllCharactersSuccess = createAction(
   `${actionsSource} GET ALL CHARACTER SUCCESS`,
   props<{ characters: Character[] }>(),
 );
+export const getCharacterById = createAction(
+  `${actionsSource} GET CHARACTER BY ID`,
+  props<{ info: { id: string | number } }>(),
+);
+
+export const getCharacterByIdSuccess = createAction(
+  `${actionsSource} GET CHARACTER BY ID,  SUCCESSFUL`,
+  props<{ currentCharacter: Character }>(),
+);

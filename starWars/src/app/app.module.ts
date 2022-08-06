@@ -19,6 +19,7 @@ import { StoreModule } from '@ngrx/store';
 import * as fromCharacters from './redux/reducers/character.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { CharacterEffects } from './redux/effects/character.effect';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,8 @@ import { CharacterEffects } from './redux/effects/character.effect';
     AppRoutingModule,
     HttpClientModule,
     MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     StoreModule.forRoot(
       {
