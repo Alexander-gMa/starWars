@@ -1,7 +1,4 @@
-<button class="btn btn-primary" (click)="createCharacter()">create character</button>
-<button class="btn btn-primary" (click)="getCharacter()">get character</button>
-<button class="btn btn-primary" (click)="updateCharacter()">update character</button>
-<button class="btn btn-primary" (click)="getCharacters()">get characters</button>
+<button class="btn btn-primary" (click)="switchPage()">create character</button>
 <div class="wrapper">
-<app-character class="character_el" *ngFor="let item of characters" [character] = "item"></app-character>
+  <app-character class="character_el" *ngFor="let item of characters" [character]="item"></app-character>
 </div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Character } from 'src/app/models/character.model';
 import { selectCharacters } from 'src/app/redux/selectors/character.selector';
@@ -12,37 +14,19 @@ import * as CharacterActions from '../../../redux/actions/character.action';
 })
 export class CharactersComponent implements OnInit {
 
+
+
   characters: Character[] | null;
 
-  constructor(private apiService: ApiService, private store: Store) { }
+  constructor(private apiService: ApiService, private store: Store, private router: Router) { }
 
   ngOnInit(): void {
     this.store.dispatch(CharacterActions.getAllCharacters())
-    this.store.select(selectCharacters).subscribe((data)=> this.characters = data);
+    this.store.select(selectCharacters).subscribe((data) => this.characters = data);
   }
 
-  createCharacter() {
-    this.apiService.createCharacter({ name: 'Sanya', gender: 'man' }).subscribe((data) => {
-      console.log(data)
-    })
-  }
-
-  updateCharacter() {
-    this.apiService.updateCharacter({ id: 8, name: 'Petya', gender: 'female' }).subscribe((data) => {
-      console.log(data)
-    })
-  }
-
-  getCharacter() {
-    this.apiService.getCharacter({ id: 8 }).subscribe((data) => {
-      console.log(data)
-    })
-  }
-
-  getCharacters() {
-    this.apiService.getCharacters().subscribe((data) => {
-      this.characters = data;
-    })
+  switchPage() {
+    this.router.navigateByUrl(`character/create`);
   }
 
 }

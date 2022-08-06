@@ -20,6 +20,7 @@ import * as fromCharacters from './redux/reducers/character.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { CharacterEffects } from './redux/effects/character.effect';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreatecharacterComponent } from './pages/createcharacter/createcharacter.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NotFoundComponentComponent,
     CharacterComponent,
     CharacterInfoComponent,
+    CreatecharacterComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,33 @@
+.input-el {
+  clear: both;
+  text-align: right;
+  line-height:25px;
+}
+
+label {
+  float: left;
+  padding-right:10px;
+}
+
+.main {
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  float: left
+}
+.create-character{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.back_btn{
+  background-color: red;
+  color: white;
+}
+.create_btn{
+  color: white;
+  background-color: green;
+  &:disabled{
+    opacity: 0.6;
+  }
+}
