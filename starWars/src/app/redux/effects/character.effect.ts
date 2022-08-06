@@ -11,6 +11,22 @@ export class CharacterEffects {
     private actions$: Actions,
     private apiService: ApiService,
   ) {}
+
+  createCharacter$ = createEffect(
+    () => {
+      return this.actions$.pipe(
+        ofType(CharacterAction.createCharacter),
+        mergeMap((data) => {
+          return this.apiService.createCharacter(data.currentCharacter);
+        },
+        ),
+        map((currentCharacter) => {
+          return CharacterAction.createCharacterSuccess({ currentCharacter });
+        }),
+      );
+    },
+  );
+
   getAllCharacters$ = createEffect(
     () => {
       return this.actions$.pipe(

@@ -29,3 +29,13 @@ export const updateCharacterSuccess = createAction(
   `${actionsSource} UPDATE CHARACTER SUCCESSFUL`,
   props<{ currentCharacter: Character }>(),
 );
+
+export const createCharacter = createAction(
+  `${actionsSource} CREATE CHARACTER`,
+  props<{ currentCharacter: Character }>(),
+);
+
+export const createCharacterSuccess = createAction(
+  `${actionsSource} CREATE CHARACTER SUCCESS`,
+  props<{ currentCharacter: Character }>(),
+);

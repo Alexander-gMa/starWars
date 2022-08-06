@@ -26,8 +26,11 @@
         <label for="name"> film:</label>
         <input formControlName="film" id="film" type="text" placeholder="Необязательное поле">
       </div>
-      <button class="back_btn" >Back to menu</button>
-      <button class="create_btn" [disabled]="createdCharacter.invalid">Create</button>
+      <button class="back_btn" (click)="switchPage()">Back to menu</button>
+      <button class="create_btn" [disabled]="createdCharacter.invalid" (click)="createCharacter()">Create</button>
+      <div *ngIf="successTitle!==''">
+        {{successTitle}}
+      </div>
     </div>
   </div>
 </form>

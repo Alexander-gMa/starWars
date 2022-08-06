@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ApiService } from 'src/app/services/api.service';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { selectCurrentCharacter } from 'src/app/redux/selectors/character.selector';
+import * as CharacterActions from '../../redux/actions/character.action';
 
 @Component({
   selector: 'app-createcharacter',
@@ -9,9 +12,11 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class CreatecharacterComponent implements OnInit {
 
-  createdCharacter:FormGroup;
+  createdCharacter: FormGroup;
 
-  constructor(private apiService: ApiService) { }
+  successTitle: string = '';
+
+  constructor(private router: Router, private store: Store) { }
 
   ngOnInit(): void {
     this.createForm()
@@ -29,8 +34,12 @@ export class CreatecharacterComponent implements OnInit {
   }
 
   createCharacter() {
-    this.apiService.createCharacter({ name: 'Sanya', gender: 'man' }).subscribe((data) => {
-      console.log(data)
-    })
+    const currentCharacter = this.createdCharacter.value;
+    this.store.dispatch(CharacterActions.createCharacter({ currentCharacter }));
+    this.successTitle = `Character was created!`
+  }
+
+  switchPage() {
+    this.router.navigateByUrl(`characters`);
   }
 }

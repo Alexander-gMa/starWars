@@ -18,7 +18,7 @@ export class CharactersComponent implements OnInit {
 
   characters: Character[] | null;
 
-  constructor(private apiService: ApiService, private store: Store, private router: Router) { }
+  constructor(private store: Store, private router: Router) { }
 
   ngOnInit(): void {
     this.store.dispatch(CharacterActions.getAllCharacters())

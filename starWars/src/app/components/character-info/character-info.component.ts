@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Character } from 'src/app/models/character.model';
 import * as CharacterActions from '../../redux/actions/character.action';
-import { selectCharacterById } from 'src/app/redux/selectors/character.selector';
+import { selectCurrentCharacter } from 'src/app/redux/selectors/character.selector';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -17,9 +17,11 @@ export class CharacterInfoComponent implements OnInit {
 
   character: Character | null;
 
+  updatedTitle: string = '';
+
   updatedCharacter: FormGroup;
 
-  constructor(private route: ActivatedRoute, private store: Store) { }
+  constructor(private route: ActivatedRoute, private store: Store, private router: Router) { }
 
   ngOnInit(): void {
     this.getCurrentCharacter();
@@ -44,24 +46,28 @@ export class CharacterInfoComponent implements OnInit {
       },
     } = this.route;
     this.store.dispatch(CharacterActions.getCharacterById({ info: { id } }))
-    this.store.select(selectCharacterById).subscribe((data) => {
+    this.store.select(selectCurrentCharacter).subscribe((data) => {
       this.updatedCharacter?.controls['name'].setValue(data?.name);
       this.updatedCharacter?.controls['gender'].setValue(data?.gender);
       this.updatedCharacter?.controls['height'].setValue(data?.height);
       this.updatedCharacter?.controls['birthday'].setValue(data?.birthday);
       this.updatedCharacter?.controls['planet'].setValue(data?.planet);
       this.updatedCharacter?.controls['film'].setValue(data?.film);
-      this.character = data
+      this.character = data;
     });
   }
 
   switchView() {
     this.viewValue === true ? this.viewValue = false : this.viewValue = true;
-    console.log(this.viewValue);
+  }
+
+  switchPage() {
+    this.router.navigateByUrl(`characters`);
   }
 
   updateCharacter() {
     const updatedCharacter = Object.assign(this.updatedCharacter.value, { id: this.character?.id });
-    this.store.dispatch(CharacterActions.updateCharacter({ currentCharacter: updatedCharacter }))
+    this.store.dispatch(CharacterActions.updateCharacter({ currentCharacter: updatedCharacter }));
+    this.updatedTitle = `Character ${updatedCharacter.name} was updated`;
   }
 }

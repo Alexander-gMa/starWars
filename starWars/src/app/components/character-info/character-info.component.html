@@ -8,7 +8,8 @@
     <p>planet: {{character?.planet || 'не известно'}}</p>
     <p>film: {{character?.film || 'не известно'}}</p>
   </div>
-  <button class="back_btn">Close</button>
+  <button class="back_btn">Back</button>
+  <button class="close_btn">Close</button>
   <button class="update_btn">Update</button>
   <div [className]="viewValue ? 'flap' : ''"></div>
 </div>
@@ -49,8 +50,12 @@
           film:
           <input formControlName="film" class="input_character" placeholder="film">
         </div>
+        <div *ngIf="updatedTitle!==''">
+          {{updatedTitle}}
+        </div>
       </div>
-      <button class="back_btn" (click)="switchView()">Close</button>
+      <button class="back_btn" (click)="switchPage()">Back</button>
+      <button class="close_btn" (click)="switchView()">Close</button>
       <button class="update_btn" (click)="updateCharacter()" [disabled]="updatedCharacter.invalid">Update</button>
       <div [className]="viewValue ? 'flap' : ''"></div>
     </div>

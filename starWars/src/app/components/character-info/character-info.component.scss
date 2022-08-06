@@ -109,9 +109,26 @@ p{
 }
 
 .update_btn,
-.back_btn {
+.close_btn {
   position: absolute;
   bottom: 20px;
+  width: 75px;
+  height: 34px;
+  background-color: #433147;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  box-shadow: 2px 0 4px #433147;
+  font-size: 12px;
+  color: #fff;
+  cursor: pointer;
+  float: right;
+  font-size: 14px;
+}
+
+.back_btn {
+  position: absolute;
+  top: 20px;
   width: 75px;
   height: 34px;
   background-color: #433147;
@@ -135,9 +152,13 @@ p{
   }
 }
 
-.back_btn {
+.close_btn {
   right: 100px;
   background-color: red;
+}
+.back_btn {
+  right: 20px;
+  background-color: rgb(74, 95, 93);
 }
 
 .character_property{

@@ -7,7 +7,7 @@ export const selectCharacters = createSelector(
   selectCharacter,
   (state:ICharactersState) => state.characters,
 );
-export const selectCharacterById = createSelector(
+export const selectCurrentCharacter = createSelector(
   selectCharacter,
   (state:ICharactersState) => state.currentCharacter,
 );
