@@ -23,6 +23,12 @@ export const reducer = createReducer(
       currentCharacter: currentCharacter,
     });
   }),
+  on(CharacterAction.updateCharacterSuccess, (state, { currentCharacter }) => {
+    return ({
+      ...state,
+      currentCharacter: currentCharacter,
+    });
+  }),
 );
 
 export function characterReducer(state: ICharactersState | undefined, action: Action) {

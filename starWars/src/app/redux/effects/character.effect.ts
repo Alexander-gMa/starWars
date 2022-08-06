@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, mergeMap } from 'rxjs';
+import { map, mergeMap, pluck } from 'rxjs';
 import * as CharacterAction from '../actions/character.action';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -36,6 +36,20 @@ export class CharacterEffects {
         }),
         map((currentCharacter) => {
           return CharacterAction.getCharacterByIdSuccess({ currentCharacter });
+        }),
+      );
+    },
+  );
+
+  updateCharacter$ = createEffect(
+    () => {
+      return this.actions$.pipe(
+        ofType(CharacterAction.updateCharacter),
+        mergeMap((data) => {
+          return this.apiService.updateCharacter(data.currentCharacter);
+        }),
+        map((currentCharacter) => {
+          return CharacterAction.updateCharacterSuccess({ currentCharacter });
         }),
       );
     },

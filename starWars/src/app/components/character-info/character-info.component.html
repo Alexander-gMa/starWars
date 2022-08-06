@@ -29,9 +29,9 @@
           gender:
           <input formControlName="gender" class="input_character">
           <p class="validate_error"
-          *ngIf="updatedCharacter.get('gender')?.dirty && updatedCharacter.get('gender')?.errors?.required">
-          Input is empty!
-        </p>
+            *ngIf="updatedCharacter.get('gender')?.dirty && updatedCharacter.get('gender')?.errors?.required">
+            Input is empty!
+          </p>
         </div>
         <div class="character_property">
           height:
@@ -41,11 +41,17 @@
           birthday:
           <input formControlName="birthday" class="input_character" placeholder="birthday">
         </div>
-        <p>planet: {{character?.planet || 'не известно'}}</p>
-        <p>film: {{character?.film || 'не известно'}}</p>
+        <div class="character_property">
+          planet:
+          <input formControlName="planet" class="input_character" placeholder="planet">
+        </div>
+        <div class="character_property">
+          film:
+          <input formControlName="film" class="input_character" placeholder="film">
+        </div>
       </div>
       <button class="back_btn" (click)="switchView()">Close</button>
-      <button class="update_btn" (click)="check()"[disabled]="updatedCharacter.invalid">Update</button>
+      <button class="update_btn" (click)="updateCharacter()" [disabled]="updatedCharacter.invalid">Update</button>
       <div [className]="viewValue ? 'flap' : ''"></div>
     </div>
   </form>

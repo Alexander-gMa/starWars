@@ -19,3 +19,13 @@ export const getCharacterByIdSuccess = createAction(
   `${actionsSource} GET CHARACTER BY ID,  SUCCESSFUL`,
   props<{ currentCharacter: Character }>(),
 );
+
+export const updateCharacter = createAction(
+  `${actionsSource} UPDATE CHARACTER`,
+  props<{ currentCharacter: Character }>(),
+);
+
+export const updateCharacterSuccess = createAction(
+  `${actionsSource} UPDATE CHARACTER SUCCESSFUL`,
+  props<{ currentCharacter: Character }>(),
+);
