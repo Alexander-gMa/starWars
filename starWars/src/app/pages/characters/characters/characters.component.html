@@ -1,0 +1,4 @@
+<button class="btn btn-primary" (click)="switchPage()">create character</button>
+<div class="wrapper">
+  <app-character class="character_el" *ngFor="let item of characters" [character]="item"></app-character>
+</div>

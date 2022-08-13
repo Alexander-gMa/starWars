@@ -1,0 +1,63 @@
+<div [className]="viewValue ? 'container' : 'block'" (click)="switchView()" *ngIf="viewValue; else inputMode">
+  <div class="content">
+    <p>id : {{character?.id}}</p>
+    <p>name: {{character?.name}}</p>
+    <p>gender: {{character?.gender}}</p>
+    <p>height: {{character?.height || 'не известно'}}</p>
+    <p>birthday: {{character?.birthday || 'не известно'}}</p>
+    <p>planet: {{character?.planet || 'не известно'}}</p>
+    <p>film: {{character?.film || 'не известно'}}</p>
+  </div>
+  <button class="back_btn">Back</button>
+  <button class="close_btn">Close</button>
+  <button class="update_btn">Update</button>
+  <div [className]="viewValue ? 'flap' : ''"></div>
+</div>
+<ng-template #inputMode>
+  <form [formGroup]="updatedCharacter">
+    <div [className]="viewValue ? 'container' : 'block'">
+      <div class="content">
+        <p>id: {{character?.id}}</p>
+        <div class="character_property">
+          name:
+          <input formControlName="name" class="input_character">
+          <p class="validate_error"
+            *ngIf="updatedCharacter.get('name')?.dirty && updatedCharacter.get('name')?.errors?.required">
+            Input is empty!
+          </p>
+        </div>
+        <div class="character_property">
+          gender:
+          <input formControlName="gender" class="input_character">
+          <p class="validate_error"
+            *ngIf="updatedCharacter.get('gender')?.dirty && updatedCharacter.get('gender')?.errors?.required">
+            Input is empty!
+          </p>
+        </div>
+        <div class="character_property">
+          height:
+          <input formControlName="height" class="input_character" placeholder="height">
+        </div>
+        <div class="character_property">
+          birthday:
+          <input formControlName="birthday" class="input_character" placeholder="birthday">
+        </div>
+        <div class="character_property">
+          planet:
+          <input formControlName="planet" class="input_character" placeholder="planet">
+        </div>
+        <div class="character_property">
+          film:
+          <input formControlName="film" class="input_character" placeholder="film">
+        </div>
+        <div *ngIf="updatedTitle!==''">
+          {{updatedTitle}}
+        </div>
+      </div>
+      <button class="back_btn" (click)="switchPage()">Back</button>
+      <button class="close_btn" (click)="switchView()">Close</button>
+      <button class="update_btn" (click)="updateCharacter()" [disabled]="updatedCharacter.invalid">Update</button>
+      <div [className]="viewValue ? 'flap' : ''"></div>
+    </div>
+  </form>
+</ng-template>

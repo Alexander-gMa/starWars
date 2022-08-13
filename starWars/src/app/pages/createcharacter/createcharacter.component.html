@@ -1,0 +1,36 @@
+<form [formGroup]="createdCharacter">
+  <div class="main">
+    <div class="create-character">
+      <div class="input-el"> Создание персонажа</div>
+      <div class="input-el">
+        <label for="name">name</label>
+        <input formControlName="name" id="name" type="text" placeholder="Обязательное поле">
+      </div>
+      <div class="input-el">
+        <label for="name"> gender:</label>
+        <input formControlName="gender" id="gender" type="text" placeholder="Обязательное поле">
+      </div>
+      <div class="input-el">
+        <label for="name"> height:</label>
+        <input formControlName="height" id="height" type="text" placeholder="Необязательное поле">
+      </div>
+      <div class="input-el">
+        <label for="name"> birthday:</label>
+        <input formControlName="birthday" id="birthday" type="text" placeholder="Необязательное поле">
+      </div>
+      <div class="input-el">
+        <label for="name"> planet:</label>
+        <input formControlName="planet" id="planet" type="text" placeholder="Необязательное поле">
+      </div>
+      <div class="input-el">
+        <label for="name"> film:</label>
+        <input formControlName="film" id="film" type="text" placeholder="Необязательное поле">
+      </div>
+      <button class="back_btn" (click)="switchPage()">Back to menu</button>
+      <button class="create_btn" [disabled]="createdCharacter.invalid" (click)="createCharacter()">Create</button>
+      <div *ngIf="successTitle!==''">
+        {{successTitle}}
+      </div>
+    </div>
+  </div>
+</form>
